@@ -23,7 +23,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -56,6 +55,10 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 	 * found)
 	 */
 	Page<Owner> findByLastNameStartingWith(String lastName, Pageable pageable);
+
+	Page<Owner> findByFirstNameStartingWith(String firstName, Pageable pageable);
+
+	Page<Owner> findByFirstNameContainingIgnoreCase(String firstName, Pageable pageable);
 
 	/**
 	 * Retrieve an {@link Owner} from the data store by id.
